@@ -15,14 +15,14 @@ type GitlabProvider struct {
 	Username string
 	Client   *gitlab.Client
 	Context  context.Context
-
+	
 	Server auth.AuthServer
 	User   auth.UserAuth
 }
 
 func NewGitlabProvider(server *auth.AuthServer, user *auth.UserAuth) (GitProvider, error) {
 	c := gitlab.NewClient(nil, user.ApiToken)
-	git.SetBaseURL("http://eplnx441.supervalu.com/api/v4")
+	c.SetBaseURL("http://eplnx441.supervalu.com/api/v4")
 	return withGitlabClient(server, user, c)
 }
 
