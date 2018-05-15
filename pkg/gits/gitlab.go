@@ -22,6 +22,7 @@ type GitlabProvider struct {
 
 func NewGitlabProvider(server *auth.AuthServer, user *auth.UserAuth) (GitProvider, error) {
 	c := gitlab.NewClient(nil, user.ApiToken)
+	git.SetBaseURL("http://eplnx441.supervalu.com/api/v4")
 	return withGitlabClient(server, user, c)
 }
 
